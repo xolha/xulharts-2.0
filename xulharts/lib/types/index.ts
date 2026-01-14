@@ -69,3 +69,33 @@ export interface ReorderRequest {
 export interface UpdateMetadataRequest {
   altText?: string;
 }
+
+// páginas disponíveis para conteúdo editável
+export const PAGES = [
+  'home',
+  'about',
+  'biscuit_pop',
+  'biscuit_chibi',
+  'biscuit_anime'
+] as const;
+
+export type Page = typeof PAGES[number];
+
+// chaves de campos por página
+export const HOME_FIELDS = ['info_1', 'info_2', 'info_3', 'info_4'] as const;
+export const BISCUIT_FIELDS = ['price', 'description'] as const;
+export const ABOUT_FIELDS = ['content'] as const;
+
+// tipo de conteúdo de página
+export interface PageContent {
+  id: number;
+  page: Page;
+  fieldKey: string;
+  content: string;
+  updatedAt: string;
+}
+
+// tipo de requisição para atualizar conteúdo
+export interface UpdateContentRequest {
+  content: string;
+}

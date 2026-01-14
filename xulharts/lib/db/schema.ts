@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, integer, serial, varchar, pgEnum, boolean } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, integer, serial, varchar, pgEnum, boolean, unique } from 'drizzle-orm/pg-core';
 
 // enums para categorias e slots fixos
 export const galleryCategoryEnum = pgEnum('gallery_category', [
@@ -59,3 +59,24 @@ export const categorySettings = pgTable('category_settings', {
   comingSoonMessage: text('coming_soon_message').default('Em breve!'),
   updatedAt: timestamp('updated_at').defaultNow().notNull()
 });
+
+// enum para páginas disponíveis
+export const pageEnum = pgEnum('page', [
+  'home',
+  'about',
+  'biscuit_pop',
+  'biscuit_chibi',
+  'biscuit_anime'
+]);
+
+// tabela de conteúdo editável das páginas
+export const pageContent = pgTable('page_content', {
+  id: serial('id').primaryKey(),
+  page: pageEnum('page').notNull(),
+  fieldKey: varchar('field_key', { length: 100 }).notNull(),
+  content: text('content').notNull().default(''),
+  updatedAt: timestamp('updated_at').defaultNow().notNull()
+}, (table) => ({
+
+  uniquePageField: unique().on(table.page, table.fieldKey)
+}));
