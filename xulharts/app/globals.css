@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-roxo-escuro: #241A38;
+  --color-roxo: #5A3C95;
+  --color-lilas: #D8C3E8;
+  --color-magenta: #784489;
+  --color-amarelo: #E49C5D;
+  --color-rosado: #AC5671;
+}
+
+@layer utilities {
+  .font-inria {
+    font-family: var(--font-inria), sans-serif;
+  }
+
+  .font-coiny {
+    font-family: var(--font-coiny), sans-serif;
+  }
+}
