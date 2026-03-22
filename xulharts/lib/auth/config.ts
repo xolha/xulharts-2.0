@@ -6,7 +6,12 @@ import * as schema from "@/lib/db/schema";
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
-    schema,
+    schema: {
+      user: schema.user,
+      session: schema.session,
+      account: schema.account,
+      verification: schema.verification,
+    },
   }),
   emailAndPassword: {
     enabled: true,
@@ -15,7 +20,7 @@ export const auth = betterAuth({
   session: {
     cookieCache: {
       enabled: true,
-      maxAge: 60 * 60 * 24 * 7, 
+      maxAge: 60 * 60 * 24 * 7,
     },
   },
   trustedOrigins: [process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"],

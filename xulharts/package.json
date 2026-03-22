@@ -11,7 +11,9 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "db:seed": "tsx --env-file=.env.local lib/db/seed.ts"
+    "db:seed": "tsx --env-file=.env.local lib/db/seed.ts",
+    "auth:generate": "node scripts/generate-auth-schema.js",
+    "auth:seed": "tsx --env-file=.env.local scripts/seed-admin.ts"
   },
   "dependencies": {
     "@vercel/blob": "^2.0.0",
