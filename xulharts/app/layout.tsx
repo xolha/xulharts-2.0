@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { Inria_Sans } from 'next/font/google';
+import { Inria_Sans, Geist } from 'next/font/google';
 import { Coiny } from 'next/font/google';
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "xulharts",
@@ -26,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={cn("font-sans", geist.variable)}>
       <body className={`${inriaSans.variable} ${coiny.variable}`}>{children}</body>
     </html>
   );
