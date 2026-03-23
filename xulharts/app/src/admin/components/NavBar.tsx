@@ -76,7 +76,7 @@ export default function NavBar({ children }: { children: React.ReactNode }) {
     <div className="flex h-screen w-full">
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10">
-          <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
+          <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto scrollbar-hide">
             <LogoIcon />
             <div className="mt-8 flex flex-col gap-2 p-1">
               {links.map((link, idx) => (
@@ -86,7 +86,7 @@ export default function NavBar({ children }: { children: React.ReactNode }) {
           </div>
         </SidebarBody>
       </Sidebar>
-      <main className="flex-1 overflow-y-auto">{children}</main>
+      <main className="flex-1 overflow-y-auto scrollbar-hide">{children}</main>
     </div>
   )
 }
