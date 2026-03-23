@@ -7,52 +7,65 @@ import {
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import { Minha_logo } from "assets";
+import {
+  House,
+  Pencil,
+  Monitor,
+  DollarSign,
+  Box,
+  Heart,
+  Flame,
+  Info,
+  LogOut,
+} from "lucide-react";
+
+const iconClass = "text-white h-5 w-5 shrink-0";
 
 const links = [
   {
     label: "Home",
     href: "/src/admin/home",
-    icon: "",
+    icon: <House className={iconClass} />,
   },
   {
     label: "Artes a Mão",
     href: "/src/admin/artes_a_mao",
-    icon: "",
+    icon: <Pencil className={iconClass} />,
   },
   {
-    label: "Artes Digtais",
+    label: "Artes Digitais",
     href: "/src/admin/artes_digitais",
-    icon: "",
+    icon: <Monitor className={iconClass} />,
   },
   {
     label: "Comissão",
     href: "/src/admin/comissao",
-    icon: "",
+    icon: <DollarSign className={iconClass} />,
   },
-    {
+  {
     label: "Pop",
     href: "/src/admin/pop",
-    icon: "",
+    icon: <Box className={iconClass} />,
   },
-    {
+  {
     label: "Chibi",
     href: "/src/admin/chibi",
-    icon: "",
+    icon: <Heart className={iconClass} />,
   },
-    {
+  {
     label: "Anime",
     href: "/src/admin/anime",
-    icon: "",
+    icon: <Flame className={iconClass} />,
   },
   {
     label: "Sobre",
     href: "/src/admin/sobre",
-    icon: "",
+    icon: <Info className={iconClass} />,
   },
   {
     label: "Sair",
-    href: "/src/site/home",
-    icon: "",
+    href: "/",
+    icon: <LogOut className={iconClass} />,
   },
 ];
 
@@ -65,7 +78,7 @@ export default function NavBar({ children }: { children: React.ReactNode }) {
         <SidebarBody className="justify-between gap-10">
           <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
             <LogoIcon />
-            <div className="mt-8 flex flex-col gap-2 items-center">
+            <div className="mt-8 flex flex-col gap-2 p-1">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} />
               ))}

@@ -32,7 +32,7 @@ export const SidebarProvider = ({
   children,
   open: openProp,
   setOpen: setOpenProp,
-  animate = false,
+  animate = true,
 }: {
   children: React.ReactNode;
   open?: boolean;
@@ -63,7 +63,7 @@ export const Sidebar = ({
   animate?: boolean;
 }) => {
   return (
-    <SidebarProvider open={open} setOpen={setOpen} animate={false}>
+    <SidebarProvider open={open} setOpen={setOpen} animate={true}>
       {children}
     </SidebarProvider>
   );
@@ -88,14 +88,14 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-roxo rounded-r-2xl dark:bg-neutral-800 w-55 shrink-0",
+          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-roxo rounded-r-2xl dark:bg-white w-55 shrink-0",
           className
         )}
         animate={{
           width: animate ? (open ? "300px" : "60px") : "300px",
         }}
         onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
         {...props}
       >
         {children}
@@ -135,12 +135,12 @@ export const MobileSidebar = ({
                 ease: "easeInOut",
               }}
               className={cn(
-                "fixed h-full w-full inset-0 bg-white dark:bg-neutral-900 p-10 z-[100] flex flex-col justify-between",
+                "fixed h-full w-full inset-0 bg-white dark:bg-white p-10 z-[100] flex flex-col justify-between",
                 className
               )}
             >
               <div
-                className="absolute right-10 top-10 z-50 text-neutral-800 dark:text-neutral-200"
+                className="absolute right-10 top-10 z-50 text-white dark:text-neutral-200"
                 onClick={() => setOpen(!open)}
               >
                 <IconX />
