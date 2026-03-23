@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
+import { Button as MovingBorderWrapper } from "@/components/ui/moving-border";
 
 interface CardTextProps {
   placeholder?: string;
@@ -32,7 +33,14 @@ export default function CardText({
   const displayImage = preview || imageUrl;
 
   return (
-    <div className="bg-linear-to-b from-lilas to-roxo/70 w-72.5 h-82.5 rounded-4xl flex flex-col p-4">
+    <MovingBorderWrapper
+      as="div"
+      borderRadius="2rem"
+      containerClassName="w-72.5 h-82.5"
+      borderClassName="bg-[radial-gradient(#5A3C95_40%,transparent_60%)]"
+      className="!flex !flex-col !items-stretch !justify-start bg-linear-to-b from-lilas to-roxo/70 p-4 border-none"
+      duration={4000}
+    >
       <input
         className="bg-transparent font-inria text-sm placeholder-gray-700 outline-none p-3 mb-2"
         placeholder={placeholder}
@@ -63,6 +71,6 @@ export default function CardText({
           </label>
         )}
       </div>
-    </div>
+    </MovingBorderWrapper>
   );
 }
