@@ -8,9 +8,6 @@ import { DotBackground } from "@/components/ui/dot-background"
 import {
   ImageIcon,
   Palette,
-  Eye,
-  EyeOff,
-  ExternalLink,
   Home
 } from "lucide-react"
 
@@ -66,7 +63,7 @@ export default function AdminHome() {
 
   useEffect(() => {
     async function loadData() {
-      // Carregar textos
+      // carrega os textos
       const contentRes = await fetch("/api/public/content/home")
       if (contentRes.ok) {
         const { data } = await contentRes.json()
@@ -75,7 +72,7 @@ export default function AdminHome() {
         }
       }
 
-      // Carregar imagens
+      // carrega as imagens
       const imageResults = await Promise.all(
         cards.map(async (card) => {
           const res = await fetch(`/api/public/hero/${card.heroSlot}`)
@@ -93,7 +90,7 @@ export default function AdminHome() {
       })
       setImageUrls(urls)
 
-      // Carregar stats das categorias
+      // carrega os stats das categorias
       const categories = Object.keys(categoryLabels)
       const statsResults = await Promise.all(
         categories.map(async (cat) => {
@@ -122,7 +119,7 @@ export default function AdminHome() {
     try {
       const promises: Promise<Response>[] = []
 
-      // Salvar textos
+      // salva os textos
       for (const card of cards) {
         const text = texts[card.fieldKey]
         if (text !== undefined) {
@@ -136,7 +133,7 @@ export default function AdminHome() {
         }
       }
 
-      // Salvar imagens
+      // salva as imagens
       for (const card of cards) {
         const file = files[card.heroSlot]
         if (file) {
