@@ -33,16 +33,17 @@ export default function CardText({
   const displayImage = preview || imageUrl;
 
   return (
-    <MovingBorderWrapper
+    /*<MovingBorderWrapper
       as="div"
       borderRadius="2rem"
       containerClassName="w-72.5 h-82.5"
       borderClassName="bg-[radial-gradient(#5A3C95_40%,transparent_60%)]"
       className="!flex !flex-col !items-stretch !justify-start bg-linear-to-b from-lilas to-roxo/70 p-4 border-none"
       duration={4000}
-    >
+    >*/
+    <div className="w-80.5 h-100.5 flex flex-col items-stretch justify-start bg-linear-to-b from-lilas to-roxo/70 p-4 rounded-[2rem]">
       <input
-        className="bg-transparent font-inria text-sm placeholder-gray-700 outline-none p-3 mb-2"
+        className="bg-transparent font-inria text-md text-center placeholder-gray-700 outline-none p-3 mb-2"
         placeholder={placeholder}
         value={value}
         onChange={(e) => onTextChange(e.target.value)}
@@ -71,6 +72,7 @@ export default function CardText({
           </label>
         )}
       </div>
-    </MovingBorderWrapper>
+      </div>
+    /*</MovingBorderWrapper>*/
   );
 }
