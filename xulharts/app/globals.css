@@ -26,9 +26,9 @@
     animation: slide-in 0.3s ease-out;
   }
 
-  .bg-dot-roxo\/\[0\.2\] {
-    background-image: radial-gradient(rgb(90 60 149 / 0.2) 1px, transparent 1px);
-    background-size: 16px 16px;
+  .dot-pattern {
+    background-image: radial-gradient(rgb(90 60 149 / 0.25) 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 
   .scrollbar-hide {
