@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Button from "./ui/Button";
 import Card from "./ui/Card";
+import Toast from "./ui/Toast";
 import { type GalleryCategory } from "@/lib/types";
 
 type SavedItem = {
@@ -28,6 +29,7 @@ export default function Gallery({ category }: GalleryProps) {
   const [items, setItems] = useState<GalleryItem[]>([]);
   const [isSaving, setIsSaving] = useState(false);
   const [dragFrom, setDragFrom] = useState<number | null>(null);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -91,8 +93,10 @@ export default function Gallery({ category }: GalleryProps) {
       const data = await res.json();
       if (!data.success) throw new Error(data.error || "Exclusão falhou");
       setItems((prev) => prev.filter((_, i) => i !== index));
+      setToast({ message: "Imagem excluída com sucesso!", type: "success" });
     } catch (err) {
       console.error("Erro ao excluir:", err);
+      setToast({ message: "Erro ao excluir a imagem.", type: "error" });
     }
   };
 
@@ -139,8 +143,10 @@ export default function Gallery({ category }: GalleryProps) {
           };
         })
       );
+      setToast({ message: "Galeria salva com sucesso!", type: "success" });
     } catch (err) {
       console.error("Erro ao salvar:", err);
+      setToast({ message: "Erro ao salvar a galeria.", type: "error" });
     } finally {
       setIsSaving(false);
     }
@@ -154,6 +160,13 @@ export default function Gallery({ category }: GalleryProps) {
 
   return (
     <div>
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
       <div className="flex flex-row justify-center items-center">
         <Button onClick={() => fileInputRef.current?.click()}>
           Enviar imagem
