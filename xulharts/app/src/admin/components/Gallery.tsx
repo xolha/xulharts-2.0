@@ -1,9 +1,14 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 import Button from "./ui/Button";
 import Card from "./ui/Card";
 import Toast from "./ui/Toast";
 import { type GalleryCategory } from "@/lib/types";
+
+export type GalleryHandle = {
+  triggerFileInput: () => void;
+  save: () => Promise<void>;
+};
 
 type SavedItem = {
   kind: "saved";
@@ -23,9 +28,10 @@ type GalleryItem = SavedItem | PendingItem;
 
 interface GalleryProps {
   category: GalleryCategory;
+  hideButtons?: boolean;
 }
 
-export default function Gallery({ category }: GalleryProps) {
+const Gallery = forwardRef<GalleryHandle, GalleryProps>(function Gallery({ category, hideButtons }, ref) {
   const [items, setItems] = useState<GalleryItem[]>([]);
   const [isSaving, setIsSaving] = useState(false);
   const [dragFrom, setDragFrom] = useState<number | null>(null);
@@ -152,6 +158,11 @@ export default function Gallery({ category }: GalleryProps) {
     }
   };
 
+  useImperativeHandle(ref, () => ({
+    triggerFileInput: () => fileInputRef.current?.click(),
+    save: handleSave,
+  }));
+
   const itemKey = (item: GalleryItem) =>
     item.kind === "saved" ? `saved-${item.id}` : item.tempId;
 
@@ -167,14 +178,16 @@ export default function Gallery({ category }: GalleryProps) {
           onClose={() => setToast(null)}
         />
       )}
-      <div className="flex flex-row justify-center items-center">
-        <Button onClick={() => fileInputRef.current?.click()}>
-          Enviar imagem
-        </Button>
-        <Button variant="roxo" onClick={handleSave} disabled={isSaving}>
-          {isSaving ? "Salvando..." : "Salvar"}
-        </Button>
-      </div>
+      {!hideButtons && (
+        <div className="flex flex-row justify-center items-center">
+          <Button onClick={() => fileInputRef.current?.click()}>
+            Enviar imagem
+          </Button>
+          <Button variant="roxo" onClick={handleSave} disabled={isSaving}>
+            {isSaving ? "Salvando..." : "Salvar"}
+          </Button>
+        </div>
+      )}
 
       <input
         ref={fileInputRef}
@@ -208,4 +221,6 @@ export default function Gallery({ category }: GalleryProps) {
       )}
     </div>
   );
-}
+});
+
+export default Gallery;
