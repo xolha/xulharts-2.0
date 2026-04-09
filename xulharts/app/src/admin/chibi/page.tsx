@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react"
 import { DotBackground } from "@/components/ui/dot-background"
 import NavBar from "../components/NavBar"
-import { Box } from "lucide-react"
+import { Box, Heart } from "lucide-react"
 import Button from "../components/ui/Button"
 import Card from "../components/ui/Card"
 import GeneralInfo from "../components/ui/GeneralInfo"
@@ -61,7 +61,7 @@ export default function Chibi() {
         <div className="p-12">
           <h1 className="text-2xl font-inria font-bold">Olá, Júlia! :D</h1>
           <h2 className="text-md font-inria mt-3 flex items-center gap-2">
-            <Box className="h-5 w-5" />
+            <Heart className="h-5 w-5" />
             Chibi
           </h2>
 
