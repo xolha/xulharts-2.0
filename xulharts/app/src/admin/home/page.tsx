@@ -94,16 +94,12 @@ export default function AdminHome() {
       const categories = Object.keys(categoryLabels)
       const statsResults = await Promise.all(
         categories.map(async (cat) => {
-          const [galleryRes, settingsRes] = await Promise.all([
-            fetch(`/api/public/gallery/${cat}`),
-            fetch(`/api/public/category/${cat}`).catch(() => null)
-          ])
+          const galleryRes = await fetch(`/api/admin/gallery/${cat}`)
           const galleryData = galleryRes.ok ? await galleryRes.json() : null
-          const settingsData = settingsRes?.ok ? await settingsRes.json() : null
           return {
             category: cat,
-            count: galleryData?.data?.length ?? 0,
-            isPublished: settingsData?.data?.isPublished ?? false
+            count: galleryData?.data?.images?.length ?? 0,
+            isPublished: false
           }
         })
       )
