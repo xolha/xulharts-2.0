@@ -75,7 +75,7 @@ export default function Sobre() {
             Sobre
           </h2>
 
-          <div className="flex flex-row justify-around items-center gap-4 pt-6">
+          <div className="flex flex-row justify-center items-center gap-12 pt-12">
             <Card
               id="sobre-hero"
               imageUrl={heroImageUrl}
