@@ -14,7 +14,7 @@ export default function GeneralInfo({
   onDescriptionChange,
 }: GeneralInfoProps) {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-2">
         <h3 className="text-center text-xl font-inria font-bold">Preço:</h3>
         <div className="flex items-center gap-2 bg-linear-to-b from-lilas to-roxo/70 w-80.5 h-15.5 rounded-xl px-4 py-2">
@@ -33,7 +33,7 @@ export default function GeneralInfo({
 
       <div className="flex flex-col gap-2">
         <h3 className="text-center text-xl font-inria font-bold">Descrição:</h3>
-        <div className="bg-linear-to-b from-lilas to-roxo/70 rounded-xl w-80.5 h-59 p-4">
+        <div className="bg-linear-to-b from-lilas to-roxo/70 rounded-xl w-80.5 h-50 p-4">
           <textarea
             value={description}
             onChange={(e) => onDescriptionChange(e.target.value)}

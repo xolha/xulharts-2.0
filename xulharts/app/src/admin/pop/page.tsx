@@ -8,6 +8,7 @@ import Card from "../components/ui/Card"
 import GeneralInfo from "../components/ui/GeneralInfo"
 import Gallery, { type GalleryHandle } from "../components/Gallery"
 import Toast from "../components/ui/Toast"
+import { Switch } from "@/components/ui/switch"
 
 export default function Pop() {
   const [price, setPrice] = useState("")
@@ -18,6 +19,8 @@ export default function Pop() {
     type: "success" | "error"
   } | null>(null)
   const galleryRef = useRef<GalleryHandle>(null)
+  const [isComingSoon, setIsComingSoon] = useState(false)
+  const [comingSoonMessage, setComingSoonMessage] = useState("Em Breve!")
 
   useEffect(() => {
     fetch("/api/public/content/biscuit_pop")
@@ -26,6 +29,16 @@ export default function Pop() {
         if (data.data?.content) {
           setPrice(data.data.content.price ?? "")
           setDescription(data.data.content.description ?? "")
+        }
+      })
+      .catch(console.error)
+      
+    fetch("/api/admin/category/biscuit_chibi")
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.data) {
+          setIsComingSoon(!data.data.isPublished)
+          setComingSoonMessage(data.data.comingSoonMessage ?? "Em Breve!")
         }
       })
       .catch(console.error)
@@ -44,6 +57,14 @@ export default function Pop() {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ content: description })
+        }),
+        fetch("api/admin/content/biscuit_chibi", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            isPublished: !isComingSoon,
+            comingSoonMessage
+          })
         })
       ])
       await galleryRef.current?.save()
@@ -76,12 +97,23 @@ export default function Pop() {
 
           <div className="flex flex-row justify-center items-center pt-12 gap-24">
             <Card id="pop-hero" />
-            <GeneralInfo
-              price={price}
-              description={description}
-              onPriceChange={setPrice}
-              onDescriptionChange={setDescription}
-            />
+
+             <div className="flex flex-col gap-4" >
+              <div className="flex justify-center gap-4 bg-linear-to-b from-lilas to-roxo/70 rounded-xl px=4 py-2">
+                <label className="text-md font-inria font-bold">Conteúdo em Breve </label>
+                <Switch
+                  checked={isComingSoon}
+                  onCheckedChange={setIsComingSoon}
+                />
+              </div>
+
+              <GeneralInfo
+                price={price}
+                description={description}
+                onPriceChange={setPrice}
+                onDescriptionChange={setDescription}
+              />
+            </div>
           </div>
 
           <hr className="border-t-2 border-roxo-escuro m-4 mt-24" />
