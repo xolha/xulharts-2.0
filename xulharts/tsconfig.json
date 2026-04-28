@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "assets": ["./app/src/assets"]
+      "assets": ["app/(src)/assets"]
     }
   },
   "include": [

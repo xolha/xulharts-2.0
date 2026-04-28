@@ -6,7 +6,7 @@ import {
   SidebarLink,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
-import { Minha_logo } from "assets";
+import { Minha_logo } from "@/app/(src)/assets";
 import {
   House,
   Pencil,
@@ -24,42 +24,42 @@ const iconClass = "text-white h-5 w-5 shrink-0";
 const links = [
   {
     label: "Home",
-    href: "/src/admin/home",
+    href: "/admin/home",
     icon: <House className={iconClass} />,
   },
   {
     label: "Artes a Mão",
-    href: "/src/admin/artes_a_mao",
+    href: "/admin/artes_a_mao",
     icon: <Pencil className={iconClass} />,
   },
   {
     label: "Artes Digitais",
-    href: "/src/admin/artes_digitais",
+    href: "/admin/artes_digitais",
     icon: <Monitor className={iconClass} />,
   },
   {
     label: "Comissão",
-    href: "/src/admin/comissao",
+    href: "/admin/comissao",
     icon: <DollarSign className={iconClass} />,
   },
   {
     label: "Pop",
-    href: "/src/admin/pop",
+    href: "/admin/pop",
     icon: <Box className={iconClass} />,
   },
   {
     label: "Chibi",
-    href: "/src/admin/chibi",
+    href: "/admin/chibi",
     icon: <Heart className={iconClass} />,
   },
   {
     label: "Anime",
-    href: "/src/admin/anime",
+    href: "/admin/anime",
     icon: <Flame className={iconClass} />,
   },
   {
     label: "Sobre",
-    href: "/src/admin/sobre",
+    href: "/admin/sobre",
     icon: <Info className={iconClass} />,
   },
   {
@@ -92,8 +92,7 @@ export default function NavBar({ children }: { children: React.ReactNode }) {
 }
 
 const LogoIcon = () => (
-  <a href="/src/admin/home" className="relative z-20 flex justify-center py-1">
+  <a href="/admin/home" className="relative z-20 flex justify-center py-1">
     <Image src={Minha_logo} alt="Xulharts" width={100} height={100} />
   </a>
-  //aa
 )

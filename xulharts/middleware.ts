@@ -4,12 +4,12 @@ export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // rotas admin protegidas (exceto página de login)
-  if (pathname.startsWith('/src/admin') && !pathname.startsWith('/src/admin/login')) {
+  if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
     const sessionCookie = request.cookies.get('better-auth.session_token');
 
     if (!sessionCookie) {
       // redireciona para login se não autenticado
-      const loginUrl = new URL('/src/admin/login', request.url);
+      const loginUrl = new URL('/admin/login', request.url);
       loginUrl.searchParams.set('redirect', pathname);
       return NextResponse.redirect(loginUrl);
     }
@@ -19,5 +19,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/src/admin/:path*'],
+  matcher: ['/admin/:path*'],
 };

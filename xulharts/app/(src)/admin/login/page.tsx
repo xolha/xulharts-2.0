@@ -3,7 +3,7 @@
 import { useState, FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { Minha_logo, Blink } from "assets";
+import { Minha_logo, Blink } from "@/app/(src)/assets";
 import Button from "../components/ui/Button";
 import { authClient } from "@/lib/auth/client";
 import { loginSchema } from "@/lib/validation/auth";
@@ -54,7 +54,7 @@ export default function Login() {
 
     setIsLoading(true);
 
-    const redirectPath = searchParams.get("redirect") || "/src/admin/home";
+    const redirectPath = searchParams.get("redirect") || "/admin/home";
 
     try {
       await authClient.signIn.email(

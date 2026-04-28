@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/xulha',
-        destination: '/src/admin/login',
+        destination: '/admin/login',
         permanent: false,
       },
     ];
