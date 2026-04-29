@@ -71,7 +71,7 @@ function NavigationMenuTrigger({
       {...props}
     >
       {children}{" "}
-      <ChevronDownIcon className="relative top-px ml-1 size-3 transition duration-300 group-data-popup-open/navigation-menu-trigger:rotate-180 group-data-open/navigation-menu-trigger:rotate-180" aria-hidden="true" />
+      <ChevronDownIcon className="relative ml-1 size-3 transition duration-300 group-data-popup-open/navigation-menu-trigger:rotate-180 group-data-open/navigation-menu-trigger:rotate-180" aria-hidden="true" />
     </NavigationMenuPrimitive.Trigger>
   )
 }
@@ -129,7 +129,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "inline-flex text-md font-inria font-bold h-9 items-center gap-2 rounded-lg px-2.5 py-1.5 transition-all outline-none hover:bg-roxo-escuro hover:text-white focus:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 in-data-[slot=navigation-menu-content]:rounded-md in-data-[slot=navigation-menu-content]:hover:bg-muted in-data-[slot=navigation-menu-content]:h-auto in-data-[slot=navigation-menu-content]:px-2 in-data-[slot=navigation-menu-content]:py-2 data-active:bg-muted/50 data-active:hover:bg-muted data-active:focus:bg-muted [&_svg:not([class*='size-'])]:size-4",
+        "inline-flex text-md font-inria font-bold h-9 items-center gap-2 rounded-lg px-2.5 py-1.5 transition-all outline-none hover:bg-roxo hover:text-white focus:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 in-data-[slot=navigation-menu-content]:rounded-md in-data-[slot=navigation-menu-content]:hover:bg-muted in-data-[slot=navigation-menu-content]:h-auto in-data-[slot=navigation-menu-content]:px-2 in-data-[slot=navigation-menu-content]:py-2 data-active:bg-muted/50 data-active:hover:bg-muted data-active:focus:bg-muted [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

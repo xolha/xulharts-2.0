@@ -1,0 +1,72 @@
+import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
+
+import { cn } from "@/lib/utils"
+import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
+
+function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
+  return (
+    <AccordionPrimitive.Root
+      data-slot="accordion"
+      className={cn("flex w-full flex-col hover:no-underline", className)}
+      {...props}
+    />
+  )
+}
+
+function AccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {
+  return (
+    <AccordionPrimitive.Item
+      data-slot="accordion-item"
+      className={cn("not-last:border-b hover:no-underline", className)}
+      {...props}
+    />
+  )
+}
+
+function AccordionTrigger({
+  className,
+  children,
+  ...props
+}: AccordionPrimitive.Trigger.Props) {
+  return (
+    <AccordionPrimitive.Header className="flex justify-center items-center">
+      <AccordionPrimitive.Trigger
+        data-slot="accordion-trigger"
+        className={cn(
+          "group/accordion-trigger hover:no-underline relative  hover:bg-roxo hover:text-white flex flex-1 items-center justify-between rounded-lg border border-transparent py-2.5 text-left text-sm font-medium transition-all outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:after:border-ring aria-disabled:pointer-events-none aria-disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-muted-foreground",
+          className
+        )}
+        {...props}
+      >
+        {children}
+        <ChevronDownIcon data-slot="accordion-trigger-icon" color="black" className="justify-center items-center hover:no-underline pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden" />
+        <ChevronUpIcon data-slot="accordion-trigger-icon" color="black" className="justify-center items-center hover:no-underline pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline" />
+      </AccordionPrimitive.Trigger>
+    </AccordionPrimitive.Header>
+  )
+}
+
+function AccordionContent({
+  className,
+  children,
+  ...props
+}: AccordionPrimitive.Panel.Props) {
+  return (
+    <AccordionPrimitive.Panel
+      data-slot="accordion-content"
+      className="overflow-hidden hover:no-underline text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+      {...props}
+    >
+      <div
+        className={cn(
+          "h-(--accordion-panel-height) text-md font-inria font-bold rounded-lg p-1.5 hover:no-underline pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:hover:text-white [&_p:not(:last-child)]:mb-4",
+          className
+        )}
+      >
+        {children}
+      </div>
+    </AccordionPrimitive.Panel>
+  )
+}
+
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
