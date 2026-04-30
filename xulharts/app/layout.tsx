@@ -30,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={cn("font-sans", geist.variable)}>
-      <body className={`${inriaSans.variable} ${coiny.variable}`}>{children}</body>
+      <body className={`${inriaSans.variable} ${coiny.variable} min-h-screen flex flex-col`}>{children}</body>
     </html>
   );
 }
