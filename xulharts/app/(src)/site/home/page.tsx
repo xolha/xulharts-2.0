@@ -44,7 +44,7 @@ export default async function Home() {
   return (
     <div className="bg-roxo-escuro min-h-screen flex flex-col">
       <div className="flex-1">
-        <BackgroundLines className="bg-roxo px-16 py-8 pb-12">
+        <BackgroundLines className="bg-roxo px-8 sm:px-32 py-8 pb-12">
           <header>
             <NavBar />
             <div className="flex flex-row justify-evenly items-center">
@@ -63,7 +63,7 @@ export default async function Home() {
                 </h1>
               </div>
             </div>
-          </header>
+            </header>
         </BackgroundLines>
 
         <main className="relative flex-1">

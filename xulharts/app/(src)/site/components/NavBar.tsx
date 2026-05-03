@@ -20,6 +20,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
+import { createPortal } from "react-dom"
 
 export default function NavMenu() {
   const [logoSrc, setLogoSrc] = useState(Minha_logo)
@@ -41,7 +42,7 @@ export default function NavMenu() {
         />
 
         {/* hamburguer mobile */}
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        <button className="md:hidden fixed right-0 pr-8 z-9999" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X color="#fff" /> : <Menu color="#fff" />}
         </button>
 
@@ -91,8 +92,8 @@ export default function NavMenu() {
       </div>
 
       {/* configurações do mobile */}
-      {isOpen && (
-        <div className="flex flex-col md:hidden items-end">
+      {isOpen && createPortal(
+        <div className="fixed top-22.5 right-0 flex flex-col md:hidden items-end z-9999 pr-9">
           <div className="rounded-xl flex flex-col bg-white w-32 p-2 items-center">
             <Link
               href="/"
@@ -164,7 +165,8 @@ export default function NavMenu() {
               Sobre
             </Link>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </nav>
   )

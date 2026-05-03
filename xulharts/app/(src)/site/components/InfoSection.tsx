@@ -41,7 +41,7 @@ export default function InfoSection() {
         </h1>
         <h1 className="font-inria text-white">
           <span className="font-bold">OBS.:</span> os preços dos chibis e de
-          corpo podem variar caso o pedido do cliente seja algo mais complexo;
+          corpo podem variar caso o pedido do cliente seja algo mais complexo.
         </h1>
       </div>
     </motion.div>

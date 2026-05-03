@@ -7,7 +7,7 @@ export default function Footer() {
     <div className="bg-roxo px-8">
       <div className="flex justify-around items-center py-4">
         <div className="flex flex-col">
-          <h1 className="text-md font-inria text-white">Redes Sociais</h1>
+          <h1 className="text-sm sm:text-md font-inria text-white">Redes Sociais</h1>
           <div className="flex flex-row justify-center items-center">
             <Link href="https://www.instagram.com/xulharts/" target="_blank">
               <Instagram
@@ -19,7 +19,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col">
-          <h1 className="text-md font-inria text-white">Contato</h1>
+          <h1 className="text-sm sm:text-md font-inria text-white">Contato</h1>
           <div className="flex flex-row justify-center items-center">
             <Link
               href="https://wa.me/5527996057158?text=Olá!%20Gostaria%20de%20fazer%20uma%20encomenda!"
@@ -34,7 +34,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col">
-          <h1 className="text-md font-inria text-white">Desenvolvimento</h1>
+          <h1 className="text-sm sm:text-md font-inria text-white">Desenvolvimento</h1>
           <div className="flex flex-row justify-center items-center">
             <Link
               href="https://github.com/xolha/xulharts-2.0"
