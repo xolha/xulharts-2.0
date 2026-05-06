@@ -8,7 +8,6 @@ import { db } from "@/lib/db"
 import { heroImages, pageContent } from "@/lib/db/schema"
 import { eq, or } from "drizzle-orm"
 import ImageGrid from "../components/ImageGrid"
-import { motion } from "framer-motion"
 import InfoSection from "../components/InfoSection"
 
 export default async function Home() {

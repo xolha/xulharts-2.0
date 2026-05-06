@@ -42,7 +42,7 @@ export default function NavMenu() {
         />
 
         {/* hamburguer mobile */}
-        <button className="md:hidden fixed right-0 pr-8 z-9999" onClick={() => setIsOpen(!isOpen)}>
+        <button className="md:hidden right-0 pr-4 z-9999" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X color="#fff" /> : <Menu color="#fff" />}
         </button>
 
@@ -93,7 +93,7 @@ export default function NavMenu() {
 
       {/* configurações do mobile */}
       {isOpen && createPortal(
-        <div className="fixed top-22.5 right-0 flex flex-col md:hidden items-end z-9999 pr-9">
+        <div className="fixed top-22.5 right-0 flex flex-col md:hidden items-end z-9999 pr-12">
           <div className="rounded-xl flex flex-col bg-white w-32 p-2 items-center">
             <Link
               href="/"
