@@ -66,7 +66,10 @@ export const pageEnum = pgEnum('page', [
   'about',
   'biscuit_pop',
   'biscuit_chibi',
-  'biscuit_anime'
+  'biscuit_anime',
+  'artes_a_mao',
+  'artes_digitais',
+  'comissoes',
 ]);
 
 // tabela de conteúdo editável das páginas
